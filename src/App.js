@@ -30,8 +30,11 @@ function App() {
         name: name.substring(price.length + 1),
         description,
         datetime
+        
       })
-    }).then((response) => {
+    
+    }
+    ).then((response) => {
       response.json().then((json) => {
         getTransactions().then(setTransactions);
         setDatetime('');
@@ -39,6 +42,7 @@ function App() {
         setDescription('');
       })
     })
+
     .catch((error) => {
       console.error('Error:', error);
     });
@@ -87,7 +91,7 @@ function App() {
                   <div className="description">{transaction.description}</div>
                 </div>
                 <div className="right">
-                  <div className={"price "+(transaction.price < 0 ? 'red' : "green")}></div>
+                  <div className={"price "+(transaction.price < 0 ? 'red' : "green")}>{transaction.price}</div>
                   <div className="datetime">{transaction.datetime.substring(0, 10)}</div>  
                 </div>
               </div>
